@@ -5,6 +5,9 @@
 #include <FieldBuilder.h>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+#include <iterator>
+#include <assert.h>
 #include <boost/algorithm/string.hpp>
 
 using namespace std;
@@ -21,6 +24,7 @@ static Cell cellFromWChar( wchar_t sym )
 		default:
 			assert( false );
 	}
+	return Cell::Count;
 }
 
 Field FieldBuilder::Construct( const std::string& file )
@@ -43,6 +47,6 @@ std::wstring FieldBuilder::getContent( wifstream& stream, const std::string& fil
 {
 	wstring result;
 	copy_if( istreambuf_iterator<wchar_t>( stream ), istreambuf_iterator<wchar_t>(), back_inserter( result ),
-			boost::is_any_of( L"*#." ) );
+		boost::is_any_of<wchar_t*>( L"*#." ) );
 	return result;
 }

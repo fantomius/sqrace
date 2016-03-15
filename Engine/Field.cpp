@@ -20,6 +20,7 @@ wchar_t wCharByCell( Cell cell )
 		default:
 			assert( false );
 	}
+	return 0;
 }
 
 std::wostream& operator<<( std::wostream& os, const Field& field )
