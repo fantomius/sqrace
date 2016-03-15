@@ -2,11 +2,12 @@
 // Created by fantomius on 14.03.16.
 //
 
-#ifndef SQRACE_FIELDBUILDER_H
-#define SQRACE_FIELDBUILDER_H
+#pragma once
 
 #include <string>
 #include <Field.h>
+
+namespace SqRace {
 
 class FieldBuilder {
 public:
@@ -16,4 +17,4 @@ private:
 	static std::wstring getContent( std::wifstream& stream, const std::string& file );
 };
 
-#endif //SQRACE_FIELDBUILDER_H
+}

@@ -133,13 +133,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleDriver.cpp" />
     <ClCompile Include="Engine\Field.cpp" />
     <ClCompile Include="Engine\FieldBuilder.cpp" />
+    <ClCompile Include="Engine\GameLoop.cpp" />
+    <ClCompile Include="Engine\RaceGame.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleDriver.h" />
+    <ClInclude Include="Engine\Car.h" />
+    <ClInclude Include="Engine\Driver.h" />
     <ClInclude Include="Engine\Field.h" />
     <ClInclude Include="Engine\FieldBuilder.h" />
+    <ClInclude Include="Engine\Direction.h" />
+    <ClInclude Include="Engine\GameLoop.h" />
+    <ClInclude Include="Engine\Point.h" />
+    <ClInclude Include="Engine\PowerUp.h" />
+    <ClInclude Include="Engine\RaceGame.h" />
+    <ClInclude Include="Engine\Racer.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resource\map.txt" />

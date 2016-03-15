@@ -8,6 +8,8 @@
 
 using namespace std;
 
+namespace SqRace {
+
 wchar_t wCharByCell( Cell cell )
 {
 	static_assert( static_cast<int>( Cell::Count ) == 2, "Invalid Cell count" );
@@ -23,11 +25,13 @@ wchar_t wCharByCell( Cell cell )
 	return 0;
 }
 
-std::wostream& operator<<( std::wostream& os, const Field& field )
+}
+
+std::wostream& operator<<( std::wostream& os, const SqRace::Field& field )
 {
 	for( int y = 0; y < field.YSize(); y++ ) {
 		for( int x = 0; x < field.XSize(); x++ ) {
-			os << wCharByCell( field.Get( x, y ));
+			os << SqRace::wCharByCell( field.Get( x, y ));
 		}
 		os << L'\n';
 	}

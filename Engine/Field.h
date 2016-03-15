@@ -2,11 +2,12 @@
 // Created by fantomius on 14.03.16.
 //
 
-#ifndef SQRACE_MAP_H
-#define SQRACE_MAP_H
+#pragma once
 
 #include <vector>
 #include <iosfwd>
+
+namespace SqRace {
 
 // Типы клеток поля
 enum class Cell {
@@ -19,26 +20,48 @@ enum class Cell {
 // Поле
 class Field {
 public:
-	Cell Get( int x, int y ) const { return cells[ getCellIndex ( x, y ) ]; }
+	// копирование по-умолчанию устраивает
+	Field( const Field& ) = default;
+	Field( Field&& ) = default;
 
-	int XSize() const { return xSize; }
+	Cell Get( int x, int y ) const
+	{
+		return cells[getCellIndex( x, y )];
+	}
 
-	int YSize() const { return ySize; }
+	int XSize() const
+	{
+		return xSize;
+	}
+
+	int YSize() const
+	{
+		return ySize;
+	}
 
 private:
 	std::vector<Cell> cells;
 	int xSize;
 	int ySize;
 
-	Field( int _xSize, int _ySize ) : xSize ( _xSize ), ySize ( _ySize ) { }
+	// создаёт FieldBuilder
+	Field( int _xSize, int _ySize ) : xSize( _xSize ), ySize( _ySize )
+	{
+	}
 
-	int getCellIndex( int x, int y ) const { return y * xSize + x; }
+	int getCellIndex( int x, int y ) const
+	{
+		return y * xSize + x;
+	}
 
-	void setCell( int x, int y, Cell cell ) { cells[ getCellIndex ( x, y ) ] = cell; }
+	void setCell( int x, int y, Cell cell )
+	{
+		cells[getCellIndex( x, y )] = cell;
+	}
 
 	friend class FieldBuilder;
 };
 
-std::wostream& operator << ( std::wostream& os, const Field& field );
+} // namespace SqRace
 
-#endif //SQRACE_MAP_H
+std::wostream& operator << ( std::wostream& os, const SqRace::Field& field );

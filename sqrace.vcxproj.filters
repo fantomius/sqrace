@@ -7,6 +7,9 @@
     <Filter Include="Resource">
       <UniqueIdentifier>{84eeed7c-66fe-48ed-ad68-11d9b64a4ece}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Drivers">
+      <UniqueIdentifier>{a266a4b6-c2aa-4851-87b8-a62c08dbf013}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Field.cpp">
@@ -16,12 +19,46 @@
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ConsoleDriver.cpp">
+      <Filter>Engine\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RaceGame.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameLoop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Field.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\FieldBuilder.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RaceGame.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Driver.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Racer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Direction.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleDriver.h">
+      <Filter>Engine\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Car.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\PowerUp.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameLoop.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Point.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>

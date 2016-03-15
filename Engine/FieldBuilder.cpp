@@ -11,6 +11,7 @@
 #include <boost/algorithm/string.hpp>
 
 using namespace std;
+using namespace SqRace;
 
 static Cell cellFromWChar( wchar_t sym )
 {
