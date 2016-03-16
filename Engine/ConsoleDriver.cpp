@@ -1,42 +1,37 @@
 #include <ConsoleDriver.h>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
 namespace SqRace {
 
+const unordered_map<wstring, Direction> DirectionConvertor = {
+		{ L"0", Dir::Null },
+		{ L"5", Dir::Null },
+		{ L"NULL", Dir::Null },
+		{ L"E", Dir::E },
+		{ L"6", Dir::E },
+		{ L"NE", Dir::NE },
+		{ L"9", Dir::NE },
+		{ L"N", Dir::N },
+		{ L"8", Dir::N },
+		{ L"NW", Dir::NW },
+		{ L"7", Dir::NW },
+		{ L"W", Dir::W },
+		{ L"4", Dir::W },
+		{ L"SW", Dir::SW },
+		{ L"1", Dir::SW },
+		{ L"S", Dir::S },
+		{ L"2", Dir::S },
+		{ L"SE", Dir::SE },
+		{ L"3", Dir::SE }
+};
+
 static Direction toDirection( wstring s )
 {
 	std::transform( s.begin(), s.end(), s.begin(), towupper );
-	if( s == L"0" || s == L"NULL" ) {
-		return Direction::Null;
-	}
-	if( s == L"E" ) {
-		return Direction::E;
-	}
-	if( s == L"NE" ) {
-		return Direction::NE;
-	}
-	if( s == L"N" ) {
-		return Direction::N;
-	}
-	if( s == L"NW" ) {
-		return Direction::NW;
-	}
-	if( s == L"W" ) {
-		return Direction::W;
-	}
-	if( s == L"SW" ) {
-		return Direction::SW;
-	}
-	if( s == L"S" ) {
-		return Direction::S;
-	}
-	if( s == L"SE" ) {
-		return Direction::SE;
-	}
-
-	return Direction::Null;
+	return DirectionConvertor.count( s ) > 0 ? DirectionConvertor.at( s ) : Dir::Null;
 }
 
 Direction ConsoleDriver::MakeMove(
@@ -45,7 +40,7 @@ Direction ConsoleDriver::MakeMove(
 		std::vector<PowerUp>& powerUps )
 {
 	wcout << field << endl;
-	wcout << L"Ââåäèòå âàø õîä: ";
+	wcout << L"Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð°Ñˆ Ñ…Ð¾Ð´: ";
 	
 	wstring command;
 	wcin >> command;

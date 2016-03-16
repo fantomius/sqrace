@@ -4,7 +4,7 @@
 
 namespace SqRace {
 
-RaceGame::RaceGame( std::string & fieldPath ) :
+RaceGame::RaceGame( const std::string & fieldPath ) :
 	field( FieldBuilder::Construct( fieldPath ) ),
 	winner( 0 )
 {

@@ -1,53 +1,44 @@
 ﻿#pragma once
 
 #include <Point.h>
+#include <map>
 
 namespace SqRace {
 
-enum class Direction {
-	Null = 0,
-	E,
-	NE,
-	N,
-	NW,
-	W,
-	SW,
-	S,
-	SE
-};
+typedef Point Direction;
 
 namespace Dir {
 
+const Direction Null = { 0, 0 };
+const Direction E = { 1, 0 };
+const Direction NE = { 1, -1 };
+const Direction N = { 0, -1 };
+const Direction NW = { -1, -1 };
+const Direction W = { -1, 0 };
+const Direction SW = { -1, 1 };
+const Direction S = { 0, 1 };
+const Direction SE = { 1, 1 };
+
 inline wchar_t ToWchar( Direction dir )
 {
-	static wchar_t* conversion = L"∎→↗↑↖←↙↓↘";
-	return conversion[static_cast<size_t>( dir )];
+	static std::map<Direction, wchar_t, boost::geometry::less<Direction> > conv = {
+			{ Null, L'∎' },
+			{ E,    L'→' },
+			{ NE,   L'↗' },
+			{ N,    L'↑' },
+			{ NW,   L'↖' },
+			{ W,    L'←' },
+			{ SW,   L'↙' },
+			{ S,    L'↓' },
+			{ SE,   L'↘' }
+	};
+	return conv.at( dir );
 }
 
 inline bool IsOpposite( Direction d1, Direction d2 )
 {
-	int val1 = static_cast<int>( d1 );
-	int val2 = static_cast<int>( d2 );
-	
-	return val1 != 0
-		&& val2 != 0
-		&& abs( val2 - val1 ) == 4;
-}
-
-inline Point ToPoint( Direction dir )
-{
-	static Point conversion[9] = {
-		{ 0, 0 },
-		{ 1, 0 },
-		{ 1, -1 },
-		{ 0, -1 },
-		{ -1, -1 },
-		{ -1, 0 },
-		{ -1, 1 },
-		{ 0, 1 },
-		{ 1, 1 }
-	};
-	return conversion[static_cast<size_t>( dir )];
+	boost::geometry::add_point( d1, d2 );
+	return boost::geometry::distance( d1, Null ) == 0;
 }
 
 }

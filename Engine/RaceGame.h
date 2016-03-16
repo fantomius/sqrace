@@ -8,7 +8,7 @@ namespace SqRace {
 
 class RaceGame {
 public:
-	RaceGame( std::string& fieldPath );
+	RaceGame( const std::string& fieldPath );
 
 	void AddDriver( std::shared_ptr<IDriver> driver );
 	void Start();
