@@ -1,6 +1,7 @@
 #include <ConsoleDriver.h>
 #include <algorithm>
 #include <unordered_map>
+#include <sstream>
 
 using namespace std;
 
@@ -34,12 +35,33 @@ static Direction toDirection( wstring s )
 	return DirectionConvertor.count( s ) > 0 ? DirectionConvertor.at( s ) : Dir::Null;
 }
 
+static int getStringPos( const Field& field, int x, int y ) {
+	return y * ( field.XSize() + 1 ) + x;
+}
+
+static wstring dumpField( const Field& field, const std::vector<CarPosition>& cars, const std::vector<PowerUp>& powerups ) {
+	wstringstream out;
+	out << field;
+	wstring result = out.str();
+	for( int i = 0; i < cars.size(); i++ ) {
+		assert( i < 10 );
+		const auto& car = cars[i];
+		int pos = getStringPos( field, car.Position.x(), car.Position.y() );
+		if( 0 > pos || pos >= result.size() ) {
+			continue;
+		}
+		result[pos] = to_wstring( i )[0];
+	}
+
+	return std::move( result );
+}
+
 Direction ConsoleDriver::MakeMove(
 		const Field& field,
-		std::vector<CarPosition>& cars,
-		std::vector<PowerUp>& powerUps )
+		const std::vector<CarPosition>& cars,
+		const std::vector<PowerUp>& powerUps )
 {
-	wcout << field << endl;
+	wcout << dumpField( field, cars, powerUps ) << endl;
 	wcout << L"Введите ваш ход: ";
 	
 	wstring command;

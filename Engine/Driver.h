@@ -13,7 +13,7 @@ interface IDriver {
 	virtual ~IDriver() {}
 
 	virtual std::wstring Name() const = 0;
-	virtual Direction MakeMove( const Field&, std::vector<CarPosition>&, std::vector<PowerUp>& ) = 0;
+	virtual Direction MakeMove( const Field&, const std::vector<CarPosition>&, const std::vector<PowerUp>& ) = 0;
 
 };
 

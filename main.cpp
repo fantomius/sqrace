@@ -7,7 +7,7 @@ using namespace SqRace;
 
 int main()
 {
-	std::locale current_locale("");
+	std::locale current_locale("en_US.UTF-8");
 	std::locale::global(current_locale);
 
 	RaceGame game( std::string( "../Resource/map.txt" ) );
