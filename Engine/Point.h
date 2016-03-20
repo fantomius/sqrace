@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <boost/geometry/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>

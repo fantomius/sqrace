@@ -1,4 +1,4 @@
-#include <ConsoleDriver.h>
+﻿#include <ConsoleDriver.h>
 #include <algorithm>
 #include <unordered_map>
 #include <sstream>
@@ -43,10 +43,10 @@ static wstring dumpField( const Field& field, const std::vector<CarPosition>& ca
 	wstringstream out;
 	out << field;
 	wstring result = out.str();
-	for( int i = 0; i < cars.size(); i++ ) {
+	for( size_t i = 0; i < cars.size(); i++ ) {
 		assert( i < 10 );
 		const auto& car = cars[i];
-		int pos = getStringPos( field, car.Position.x(), car.Position.y() );
+		size_t pos = getStringPos( field, car.Position.x(), car.Position.y() );
 		if( 0 > pos || pos >= result.size() ) {
 			continue;
 		}
